@@ -1,0 +1,111 @@
+---
+/**
+ * 根路径 / —— 自动跳转到默认语言 /ru/（俄语）
+ * -----------------------------------------------------------------------------
+ * 三重保险，保证任何环境都能正确跳转：
+ *   1. meta refresh（最通用，静态托管也生效）
+ *   2. JS 跳转（保留 hash / query）
+ *   3. canonical 指向 /ru/（告诉搜索引擎首选版本）
+ *
+ * 注意：更规范的做法是在托管层配置 301。若你的托管支持
+ * 重定向规则（Cloudflare Pages / Netlify / Nginx），建议添加：
+ *    /  ->  /ru/   301
+ * 本文件作为兜底保留。
+ */
+import { SITE, CONTACT } from '@/config';
+
+const target = '/ru/';
+const targetAbs = new URL(target, SITE.url).href;
+---
+
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FIBC биг-бэги | Хунъюнь Цзянтянь — Производитель из Китая</title>
+    <meta
+      name="description"
+      content="Производитель FIBC биг-бэгов из Китая. Поставки в Россию и Среднюю Азию."
+    />
+
+    <!-- 搜索引擎首选版本 -->
+    <meta name="robots" content="noindex, follow" />
+    <link rel="canonical" href={targetAbs} />
+
+    <!-- hreflang -->
+    <link rel="alternate" hreflang="ru-RU" href={targetAbs} />
+    <link rel="alternate" hreflang="en-US" href={new URL('/en/', SITE.url).href} />
+    <link rel="alternate" hreflang="x-default" href={targetAbs} />
+
+    <!-- 1) meta refresh 兜底 -->
+    <meta http-equiv="refresh" content={`0; url=${target}`} />
+
+    <!-- 2) JS 跳转，保留 hash 与查询字符串 -->
+    <script>
+      (function () {
+        var target = '/ru/';
+        location.replace(target + location.search + location.hash);
+      })();
+    </script>
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans:wght@400;500;600;700&display=swap"
+    />
+
+    <style>
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        font-family: Inter, 'Noto Sans', system-ui, Arial, sans-serif;
+        background: #193b70;
+        color: #fff;
+        text-align: center;
+        padding: 24px;
+      }
+      .wrap { max-width: 420px; }
+      .mark {
+        width: 56px; height: 56px; margin: 0 auto 20px;
+        display: grid; place-items: center;
+        border-radius: 14px; background: rgba(255,255,255,.1);
+      }
+      h1 { font-size: 18px; margin: 0 0 8px; font-weight: 800; }
+      p { font-size: 14px; color: #adc4e4; margin: 0 0 24px; line-height: 1.6; }
+      a {
+        display: inline-block; padding: 12px 22px; border-radius: 8px;
+        background: #f27c22; color: #fff; text-decoration: none;
+        font-weight: 700; font-size: 14px;
+      }
+      .links { margin-top: 18px; font-size: 13px; }
+      .links a { background: none; padding: 6px 10px; color: #adc4e4; text-decoration: underline; font-weight: 600; }
+    </style>
+  </head>
+
+  <body>
+    <div class="wrap">
+      <div class="mark">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#f27c22" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8 3h8l1 4v12a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2V7l1-4Z" />
+          <path d="M7.2 7h9.6" />
+          <path d="M10.5 11h3" />
+        </svg>
+      </div>
+
+      <h1>Производитель FIBC биг-бэгов из Китая</h1>
+      <p>Поставки в Россию и Среднюю Азию<br />FIBC Bulk Bag Manufacturer from China</p>
+
+      <a href={target}>Перейти на сайт →</a>
+
+      <div class="links">
+        <a href={target}>Русский</a> ·
+        <a href="/en/">English</a>
+      </div>
+    </div>
+  </body>
+</html>

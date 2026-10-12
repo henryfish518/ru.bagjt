@@ -1,0 +1,56 @@
+$:
+  vscode:
+    - runner:
+        cpus: 64
+      docker:
+        image: docker.cnb.cool/workspaces/image:node
+      services:
+        - vscode
+        - docker
+      stages:
+        - name: 环境启动时安装依赖
+          script: npm install
+
+main:
+  push:
+    - runner:
+        cpus: 64
+      docker:
+        image: docker.cnb.cool/workspaces/image:node
+      imports:
+        - https://cnb.cool/66868344.cn_691/wenjian/-/blob/main/ru_bagjt.yml
+      stages:
+        - name: 安装依赖
+          script: npm install
+
+        - name: 构建当前项目
+          script: npm run build
+
+        - name: 部署到cos
+          image: tencentcom/coscli
+          script: |
+            coscli config set --secret_id $COS_SECRET_ID --secret_key $COS_SECRET_KEY
+            coscli config add --init-skip=true -b $COS_BUCKET -r $COS_REGION
+            coscli sync ./dist cos://$COS_BUCKET/ -r --delete --force --routines=1000 --thread-num=1000
+
+
+web_trigger:
+  - runner:
+      cpus: 64
+    docker:
+      image: docker.cnb.cool/workspaces/image:node
+    imports:
+      - https://cnb.cool/66868344.cn_691/wenjian/-/blob/main/ru_bagjt.yml
+    stages:
+        - name: 安装依赖
+          script: npm install
+
+        - name: 构建当前项目
+          script: npm run build
+
+        - name: 部署到cos
+          image: tencentcom/coscli
+          script: |
+            coscli config set --secret_id $COS_SECRET_ID --secret_key $COS_SECRET_KEY
+            coscli config add --init-skip=true -b $COS_BUCKET -r $COS_REGION
+            coscli sync ./dist cos://$COS_BUCKET/ -r --delete --force --routines=1000 --thread-num=1000

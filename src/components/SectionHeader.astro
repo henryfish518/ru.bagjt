@@ -1,0 +1,27 @@
+---
+/**
+ * SectionHeader —— 通用章节标题（eyebrow + 主标题 + 副标题）
+ */
+interface Props {
+  eyebrow?: string;
+  title: string;
+  subtitle?: string;
+  align?: 'left' | 'center';
+  /** 是否在深色背景上使用 */
+  onDark?: boolean;
+}
+
+const { eyebrow, title, subtitle, align = 'left', onDark = false } = Astro.props;
+
+const alignCls = align === 'center' ? 'text-center mx-auto items-center' : 'text-left items-start';
+---
+
+<div class:list={['flex flex-col', alignCls, align === 'center' ? 'max-w-3xl' : 'max-w-3xl']}>
+  {eyebrow && (
+    <span class:list={['eyebrow', onDark && '!text-accent-400']}>{eyebrow}</span>
+  )}
+  <h2 class:list={['section-title', onDark && '!text-white']}>{title}</h2>
+  {subtitle && (
+    <p class:list={['section-sub', onDark && '!text-brand-200']}>{subtitle}</p>
+  )}
+</div>
