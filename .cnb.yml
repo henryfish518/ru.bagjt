@@ -26,6 +26,14 @@ main:
         - name: 构建当前项目
           script: npm run build
 
+        - name: 检查密钥注入（调试用，可删）
+          script: |
+            echo "COS_SECRET_ID 长度: ${#COS_SECRET_ID}"
+            echo "COS_SECRET_KEY 长度: ${#COS_SECRET_KEY}"
+            echo "COS_SECRET_ID 前4位: $(echo $COS_SECRET_ID | cut -c1-4)"
+            echo "COS_BUCKET: $COS_BUCKET"
+            echo "COS_REGION: $COS_REGION"
+
         - name: 部署到cos
           image: tencentcom/coscli
           script: |
@@ -47,6 +55,14 @@ web_trigger:
 
         - name: 构建当前项目
           script: npm run build
+
+        - name: 检查密钥注入（调试用，可删）
+          script: |
+            echo "COS_SECRET_ID 长度: ${#COS_SECRET_ID}"
+            echo "COS_SECRET_KEY 长度: ${#COS_SECRET_KEY}"
+            echo "COS_SECRET_ID 前4位: $(echo $COS_SECRET_ID | cut -c1-4)"
+            echo "COS_BUCKET: $COS_BUCKET"
+            echo "COS_REGION: $COS_REGION"
 
         - name: 部署到cos
           image: tencentcom/coscli
