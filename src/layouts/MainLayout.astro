@@ -29,6 +29,9 @@ interface Props {
   ogImage?: string;
   /** 页面类型 */
   pageType?: 'website' | 'article';
+  /** 自定义 hreflang 备用链接组（如新闻详情页按实际翻译存在情况输出）；
+   *  不传时按 slug 生成全部语言的默认组 */
+  alternates?: Array<{ hreflang: string; href: string }>;
 }
 
 const {
@@ -39,13 +42,14 @@ const {
   keywords = '',
   ogImage = '/og-default.svg',
   pageType = 'website',
+  alternates: alternatesProp,
 } = Astro.props;
 
 const t = useTranslations(locale);
 const meta = LOCALE_META[locale];
 
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
-const alternates = getAlternateLinks(SITE.url, slug);
+const alternates = alternatesProp ?? getAlternateLinks(SITE.url, slug);
 const ogImageAbs = new URL(ogImage, SITE.url).href;
 
 /** Organization 结构化数据 —— 帮助搜索引擎识别企业主体 */

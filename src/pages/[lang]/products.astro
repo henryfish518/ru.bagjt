@@ -9,6 +9,7 @@ import ProductCard from '@/components/ProductCard.astro';
 import SectionHeader from '@/components/SectionHeader.astro';
 import CtaBand from '@/components/CtaBand.astro';
 import { useTranslations, type Locale, getLocalizedPath } from '@/i18n';
+import { getEntry } from 'astro:content';
 
 export function getStaticPaths() {
   return [{ params: { lang: 'ru' } }, { params: { lang: 'en' } }];
@@ -18,6 +19,9 @@ const { lang } = Astro.params as { lang: Locale };
 const locale = lang;
 const t = useTranslations(locale);
 const p = t.products;
+
+/** 产品数据（content collection：src/content/products/{lang}.json） */
+const productsData = (await getEntry('products', locale))?.data;
 
 /* ============================================================================
    页头图片占位：src/assets/images/products-hero.jpg
@@ -56,7 +60,7 @@ const p = t.products;
 
       <!-- 标准参数横条 -->
       <dl class="mt-10 grid gap-px overflow-hidden rounded-xl border border-white/15 bg-white/10 backdrop-blur-sm sm:grid-cols-2 lg:grid-cols-4">
-        {p.specs.map((s) => (
+        {productsData.specs.map((s) => (
           <div class="bg-brand-700/60 px-5 py-4">
             <dt class="text-[11px] font-bold uppercase tracking-wide text-brand-300">{s.key}</dt>
             <dd class="mt-1.5 text-sm font-semibold text-white">{s.value}</dd>
@@ -72,7 +76,7 @@ const p = t.products;
       <SectionHeader eyebrow={p.hero.eyebrow} title={p.list.title} subtitle={p.list.subtitle} />
 
       <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {p.items.map((item) => (
+        {productsData.items.map((item) => (
           <ProductCard
             locale={locale}
             id={item.id}
@@ -98,7 +102,7 @@ const p = t.products;
       />
 
       <div class="mt-12 space-y-6">
-        {p.items.map((item, i) => (
+        {productsData.items.map((item, i) => (
           <article id={`detail-${item.id}`} class="card overflow-hidden">
             <div class="grid gap-0 lg:grid-cols-12">
               <!-- 左：分类视觉位（技术感占位，接入真实图片见 src/assets/images/README.md） -->
@@ -197,7 +201,7 @@ const p = t.products;
             </tr>
           </thead>
           <tbody class="divide-y divide-slate-100 bg-white">
-            {p.specTable.rows.map((row, i) => (
+            {productsData.specTableRows.map((row, i) => (
               <tr class:list={[i % 2 === 1 && 'bg-slate-50/60']}>
                 <th scope="row" class="w-2/5 px-5 py-3.5 align-top font-semibold text-slate-600">
                   {row.key}

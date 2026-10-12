@@ -16,6 +16,7 @@ import {
   type Locale,
 } from '@/i18n';
 import { CONTACT, NAV_ITEMS, whatsappLink, mailtoLink, CONTACT_CONFIGURED } from '@/config';
+import { getEntry } from 'astro:content';
 
 interface Props {
   locale: Locale;
@@ -25,8 +26,11 @@ const { locale } = Astro.props;
 const t = useTranslations(locale);
 const other = getOtherLocale(locale);
 
+/** 产品数据（content collection：src/content/products/{lang}.json） */
+const productsData = (await getEntry('products', locale))?.data;
+
 /** 页脚展示的产品快捷入口（取产品前 5 项） */
-const productLinks = t.products.items.slice(0, 5).map((p) => ({
+const productLinks = (productsData?.items ?? []).slice(0, 5).map((p) => ({
   name: p.name,
   href: getLocalizedPath(locale, `products#${p.id}`),
 }));

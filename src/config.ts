@@ -64,22 +64,8 @@ export const CONTACT_CONFIGURED = {
 export const NAV_ITEMS = [
   { slug: '', key: 'home' },
   { slug: 'products', key: 'products' },
+  { slug: 'news', key: 'news' },
   { slug: 'about', key: 'about' },
   { slug: 'contact', key: 'contact' },
 ] as const;
 
-/** 产品 slug 顺序（与 i18n products.items[].id 一致）
- *  来源于中文官网 robotf.cn「产品中心」的 8 个真实分类：
- *  通用吨袋 / 食品级吨袋 / 重型吨袋 / 内拉筋吨袋 / 耐酸碱吨袋 /
- *  耐高温集装袋 / TYPE-D导电集装袋 / TYPE-C防静电集装袋
- */
-export const PRODUCT_IDS = [
-  'universal',
-  'food-grade',
-  'heavy-duty',
-  'inner-baffle',
-  'acid-alkali',
-  'heat-resistant',
-  'type-d',
-  'type-c',
-] as const;

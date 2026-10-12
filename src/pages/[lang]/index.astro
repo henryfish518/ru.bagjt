@@ -10,6 +10,7 @@ import ProductCard from '@/components/ProductCard.astro';
 import SectionHeader from '@/components/SectionHeader.astro';
 import CtaBand from '@/components/CtaBand.astro';
 import { useTranslations, type Locale, getLocalizedPath } from '@/i18n';
+import { getEntry } from 'astro:content';
 
 export function getStaticPaths() {
   return [{ params: { lang: 'ru' } }, { params: { lang: 'en' } }];
@@ -21,8 +22,11 @@ const t = useTranslations(locale);
 
 const h = t.home;
 
+/** 产品数据（content collection：src/content/products/{lang}.json） */
+const productsData = (await getEntry('products', locale))?.data;
+
 /** 首页展示前 6 个产品 */
-const featured = t.products.items.slice(0, 6);
+const featured = productsData?.items.slice(0, 6) ?? [];
 ---
 
 <MainLayout
@@ -165,7 +169,7 @@ const featured = t.products.items.slice(0, 6);
       <div class="rounded-2xl border border-slate-200 bg-slate-50 p-6 sm:p-8">
         <h3 class="text-lg font-bold text-brand-700">{t.products.specTitle}</h3>
         <div class="mt-5 rounded-xl border border-slate-200 bg-white px-5 py-2">
-          {t.products.specs.map((s) => (
+          {productsData.specs.map((s) => (
             <div class="spec-row">
               <span class="spec-key">{s.key}</span>
               <span class="spec-val">{s.value}</span>
