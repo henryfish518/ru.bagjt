@@ -14,7 +14,7 @@
     "viewProducts": "View Products",
     "learnMore": "Learn more",
     "backHome": "Back to home",
-    "whatsapp": "WhatsApp",
+    "whatsapp": "Telegram",
     "email": "Email",
     "phone": "Phone",
     "address": "Address",
@@ -220,7 +220,7 @@
       "title": "Need a quotation for FIBC bulk bags?",
       "subtitle": "Send us your specification and quantity — we reply within 24 hours on working days.",
       "primary": "Contact us now",
-      "secondary": "Chat on WhatsApp"
+      "secondary": "Chat on Telegram"
     }
   },
   "products": {
@@ -457,8 +457,8 @@
   "contact": {
     "meta": {
       "title": "Contact Us — FIBC Bulk Bag Supplier, Foshan China | Hongyun Jiangtian",
-      "description": "Contact Foshan Hongyun Jiangtian Packaging Materials Co., Ltd for FIBC bulk bag quotations. WhatsApp and email inquiry welcome. Factory in Foshan City, Guangdong Province, China.",
-      "keywords": "contact FIBC supplier, bulk bag quotation, WhatsApp FIBC manufacturer, Foshan packaging factory contact"
+      "description": "Contact Foshan Hongyun Jiangtian Packaging Materials Co., Ltd for FIBC bulk bag quotations. Telegram and email inquiry welcome. Factory in Foshan City, Guangdong Province, China.",
+      "keywords": "contact FIBC supplier, bulk bag quotation, Telegram FIBC manufacturer, Foshan packaging factory contact"
     },
     "hero": {
       "eyebrow": "Contact",
@@ -467,13 +467,13 @@
     },
     "info": {
       "title": "Contact information",
-      "subtitle": "The fastest way to reach us is WhatsApp or email.",
+      "subtitle": "The fastest way to reach us is Telegram or email.",
       "companyLabel": "Company",
       "companyValue": "Foshan Hongyun Jiangtian Packaging Materials Co., Ltd",
       "siteLabel": "Website",
       "siteValue": "bagjt.com",
-      "whatsappLabel": "WhatsApp",
-      "whatsappValue": "[ RESERVED — fill in your WhatsApp number ]",
+      "whatsappLabel": "Telegram",
+      "whatsappValue": "[ RESERVED — fill in your Telegram username ]",
       "emailLabel": "Email",
       "emailValue": "[ RESERVED — fill in your email address ]",
       "addressLabel": "Address",
@@ -483,9 +483,9 @@
     },
     "form": {
       "title": "Send an inquiry",
-      "subtitle": "Fill in the form below for your reference, then send it to us via WhatsApp or email. This form is for demonstration only and does not submit to a server.",
+      "subtitle": "Fill in the form below for your reference, then send it to us via Telegram or email. This form is for demonstration only and does not submit to a server.",
       "noticeTitle": "Please note",
-      "noticeText": "This form is UI only — it does not send data. To make sure we receive your inquiry quickly, please copy your details and send them to us on WhatsApp or by email.",
+      "noticeText": "This form is UI only — it does not send data. To make sure we receive your inquiry quickly, please copy your details and send them to us on Telegram or by email.",
       "fields": {
         "name": "Your name",
         "namePlaceholder": "e.g. Ivan Petrov",
@@ -495,7 +495,7 @@
         "countryPlaceholder": "e.g. Russia",
         "email": "Email",
         "emailPlaceholder": "you@company.com",
-        "whatsapp": "WhatsApp / Phone",
+        "whatsapp": "Telegram / Phone",
         "whatsappPlaceholder": "+7 ...",
         "product": "Product type",
         "productOptions": [
@@ -515,8 +515,8 @@
         "messagePlaceholder": "Size (L×W×H), load capacity, fabric weight, printing, liner, UV protection, target price..."
       },
       "submit": "Submit inquiry",
-      "submitHint": "This button does not send data. Please use WhatsApp or email below.",
-      "sendWhatsapp": "Send via WhatsApp",
+      "submitHint": "This button does not send data. Please use Telegram or email below.",
+      "sendWhatsapp": "Send via Telegram",
       "sendEmail": "Send via Email",
       "copyButton": "Copy inquiry text",
       "copied": "Copied"
@@ -552,8 +552,8 @@
     },
     "cta": {
       "title": "Let's talk about your FIBC project",
-      "subtitle": "Send us a message on WhatsApp or by email — we usually reply within one working day.",
-      "primary": "Chat on WhatsApp",
+      "subtitle": "Send us a message on Telegram or by email — we usually reply within one working day.",
+      "primary": "Chat on Telegram",
       "secondary": "Send an email"
     }
   },

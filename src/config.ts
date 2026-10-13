@@ -35,6 +35,10 @@ export const CONTACT = {
   address: 'Foshan City, Guangdong Province, China',
   addressRu: 'Город Фошань, провинция Гуандун, Китай',
   hours: 'Monday – Saturday, 09:00 – 18:00 (GMT+8)',
+  /** Telegram 用户名（不含 @） */
+  telegramUsername: 'bagjt518',
+  /** 页面上展示的格式 */
+  telegramDisplay: '@bagjt518',
 } as const;
 
 /** WhatsApp 深链（号码未填写时回退到 wa.me 首页） */
@@ -42,6 +46,12 @@ export function whatsappLink(presetText = ''): string {
   const base = CONTACT.whatsappNumber
     ? `https://wa.me/${CONTACT.whatsappNumber}`
     : 'https://wa.me/';
+  return presetText ? `${base}?text=${encodeURIComponent(presetText)}` : base;
+}
+
+/** Telegram 深链（带预设文本） */
+export function telegramLink(presetText = ''): string {
+  const base = `https://t.me/${CONTACT.telegramUsername}`;
   return presetText ? `${base}?text=${encodeURIComponent(presetText)}` : base;
 }
 
@@ -57,6 +67,7 @@ export function mailtoLink(subject = '', body = ''): string {
 /** 是否已配置真实联系方式（用于组件中显示提示） */
 export const CONTACT_CONFIGURED = {
   whatsapp: CONTACT.whatsappNumber.length > 0,
+  telegram: CONTACT.telegramUsername.length > 0,
   email: CONTACT.email.length > 0,
 };
 

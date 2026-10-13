@@ -3,7 +3,7 @@
  * CtaBand —— 通用底部行动条（深蓝背景 + 橙色主按钮）
  */
 import { getLocalizedPath, type Locale } from '@/i18n';
-import { whatsappLink } from '@/config';
+import { telegramLink } from '@/config';
 
 interface Props {
   locale: Locale;
@@ -11,9 +11,9 @@ interface Props {
   subtitle?: string;
   primary?: string;
   secondary?: string;
-  /** 主按钮跳转到联系页（默认），或指定 WhatsApp */
-  primaryAction?: 'contact' | 'whatsapp';
-  secondaryAction?: 'contact' | 'whatsapp' | 'none';
+  /** 主按钮跳转到联系页（默认），或指定 Telegram */
+  primaryAction?: 'contact' | 'telegram';
+  secondaryAction?: 'contact' | 'telegram' | 'none';
 }
 
 const {
@@ -23,7 +23,7 @@ const {
   primary,
   secondary,
   primaryAction = 'contact',
-  secondaryAction = 'whatsapp',
+  secondaryAction = 'telegram',
 } = Astro.props;
 
 const waText =
@@ -32,7 +32,7 @@ const waText =
     : 'Hello! I would like to receive a quotation for FIBC bulk bags.';
 
 const hrefFor = (action: string) =>
-  action === 'whatsapp' ? whatsappLink(waText) : getLocalizedPath(locale, 'contact');
+  action === 'telegram' ? telegramLink(waText) : getLocalizedPath(locale, 'contact');
 ---
 
 <section class="bg-brand-600">
@@ -53,7 +53,7 @@ const hrefFor = (action: string) =>
           {primary && (
             <a
               href={hrefFor(primaryAction)}
-              {...(primaryAction === 'whatsapp' ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+              {...(primaryAction === 'telegram' ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
               class="btn-accent !px-6 !py-3.5 text-base"
             >
               {primary}
@@ -62,7 +62,7 @@ const hrefFor = (action: string) =>
           {secondary && secondaryAction !== 'none' && (
             <a
               href={hrefFor(secondaryAction)}
-              {...(secondaryAction === 'whatsapp' ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+              {...(secondaryAction === 'telegram' ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
               class="btn-ghost-light !px-6 !py-3.5 text-base"
             >
               {secondary}
