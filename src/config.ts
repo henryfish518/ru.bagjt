@@ -28,8 +28,8 @@ export const SITE = {
  * ==========================================================================
  */
 export const CONTACT = {
-  whatsappNumber: '', // 【预留填写位置】例如 '8613800000000'
-  whatsappDisplay: '', // 【预留填写位置】例如 '+86 138 0000 0000'
+  whatsappNumber: '8618570518098',
+  whatsappDisplay: '+86 185 7051 8098',
   email: '16868344@qq.com', // 来源：中文官网公开邮箱；建议替换为国际邮箱
   phone: '18570518098', // 来源：中文官网服务热线
   address: 'Foshan City, Guangdong Province, China',
