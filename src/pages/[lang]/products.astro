@@ -221,8 +221,10 @@ const productsData = (await getEntry('products', locale))?.data;
     title={p.cta.title}
     subtitle={p.cta.subtitle}
     primary={p.cta.primary}
-    secondary={t.common.whatsapp}
+    secondary="Telegram"
+    tertiary="WhatsApp"
     primaryAction="contact"
     secondaryAction="telegram"
+    tertiaryAction="whatsapp"
   />
 </MainLayout>

@@ -44,26 +44,6 @@ const waText =
 ---
 
 <footer class="mt-auto bg-brand-800 text-brand-100">
-  <!-- 顶部：CTA 条 -->
-  <div class="border-b border-white/10 bg-brand-700">
-    <div class="container-x flex flex-col items-start justify-between gap-4 py-6 sm:flex-row sm:items-center">
-      <p class="text-sm font-semibold text-white sm:text-base">
-        {t.home.cta.title}
-      </p>
-      <div class="flex flex-wrap items-center gap-3">
-        <a href={telegramLink(waText)} target="_blank" rel="noopener noreferrer" class="btn-accent !py-2.5">
-          Telegram
-        </a>
-        <a href={whatsappLink(waText)} target="_blank" rel="noopener noreferrer" class="btn-ghost-light !py-2.5">
-          WhatsApp
-        </a>
-        <a href={getLocalizedPath(locale, 'contact')} class="btn-ghost-light !py-2.5">
-          {t.common.contactUs}
-        </a>
-      </div>
-    </div>
-  </div>
-
   <div class="container-x grid gap-10 py-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8 lg:py-14">
     <!-- 公司简介 -->
     <div class="sm:col-span-2 lg:col-span-1">

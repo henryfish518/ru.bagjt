@@ -3,7 +3,7 @@
  * CtaBand —— 通用底部行动条（深蓝背景 + 橙色主按钮）
  */
 import { getLocalizedPath, type Locale } from '@/i18n';
-import { telegramLink } from '@/config';
+import { telegramLink, whatsappLink } from '@/config';
 
 interface Props {
   locale: Locale;
@@ -11,9 +11,13 @@ interface Props {
   subtitle?: string;
   primary?: string;
   secondary?: string;
-  /** 主按钮跳转到联系页（默认），或指定 Telegram */
+  tertiary?: string;
+  /** 主按钮：跳转联系页（默认）或 Telegram */
   primaryAction?: 'contact' | 'telegram';
-  secondaryAction?: 'contact' | 'telegram' | 'none';
+  /** 次按钮：跳转联系页或 Telegram 或 WhatsApp */
+  secondaryAction?: 'contact' | 'telegram' | 'whatsapp' | 'none';
+  /** 第三按钮：跳转联系页或 Telegram 或 WhatsApp */
+  tertiaryAction?: 'contact' | 'telegram' | 'whatsapp' | 'none';
 }
 
 const {
@@ -22,8 +26,10 @@ const {
   subtitle,
   primary,
   secondary,
+  tertiary,
   primaryAction = 'contact',
   secondaryAction = 'telegram',
+  tertiaryAction = 'whatsapp',
 } = Astro.props;
 
 const waText =
@@ -32,7 +38,11 @@ const waText =
     : 'Hello! I would like to receive a quotation for FIBC bulk bags.';
 
 const hrefFor = (action: string) =>
-  action === 'telegram' ? telegramLink(waText) : getLocalizedPath(locale, 'contact');
+  action === 'telegram' ? telegramLink(waText)
+  : action === 'whatsapp' ? whatsappLink(waText)
+  : getLocalizedPath(locale, 'contact');
+
+const isExternal = (action: string) => action === 'telegram' || action === 'whatsapp';
 ---
 
 <section class="bg-brand-600">
@@ -53,7 +63,7 @@ const hrefFor = (action: string) =>
           {primary && (
             <a
               href={hrefFor(primaryAction)}
-              {...(primaryAction === 'telegram' ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+              {...(isExternal(primaryAction) ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
               class="btn-accent !px-6 !py-3.5 text-base"
             >
               {primary}
@@ -62,10 +72,19 @@ const hrefFor = (action: string) =>
           {secondary && secondaryAction !== 'none' && (
             <a
               href={hrefFor(secondaryAction)}
-              {...(secondaryAction === 'telegram' ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+              {...(isExternal(secondaryAction) ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
               class="btn-ghost-light !px-6 !py-3.5 text-base"
             >
               {secondary}
+            </a>
+          )}
+          {tertiary && tertiaryAction !== 'none' && (
+            <a
+              href={hrefFor(tertiaryAction)}
+              {...(isExternal(tertiaryAction) ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+              class="btn-ghost-light !px-6 !py-3.5 text-base"
+            >
+              {tertiary}
             </a>
           )}
         </div>
