@@ -7,7 +7,7 @@
 
 export const SITE = {
   /** 生产域名，需与 astro.config.mjs 中的 site 保持一致 */
-  url: 'https://bagjt.com',
+  url: 'https://ru.bagjt.com',
 
   /** 公司名（英文，用于 sitemap / 结构化数据） */
   companyEn: 'Foshan Hongyun Jiangtian Packaging Materials Co., Ltd',

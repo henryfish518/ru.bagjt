@@ -98,7 +98,7 @@ const isActive = (itemSlug: string) => itemSlug === slug;
     <!-- 右侧操作区 -->
     <div class="flex items-center gap-2">
       <!-- ============ RU / EN 语言切换器 ============ -->
-      <div class="flex items-center rounded-lg border border-slate-200 bg-slate-50 p-0.5" role="group" aria-label={t.common.langSwitchLabel}>
+      <div class="hidden" role="group" aria-label={t.common.langSwitchLabel}>
         <span
           class="rounded-md bg-white px-2.5 py-1.5 text-xs font-bold text-brand-700 shadow-sm"
           aria-current="true"

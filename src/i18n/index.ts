@@ -46,18 +46,18 @@ export function useTranslations(locale: Locale): Dictionary {
 
 /**
  * 生成某语言下的 URL 路径。
- * getLocalizedPath('ru', 'products')  -> '/ru/products'
+ * getLocalizedPath('ru', 'products')  -> '/products/'
  * getLocalizedPath('en')             -> '/en/'
  */
 export function getLocalizedPath(locale: Locale, path = ''): string {
   const clean = path.replace(/^\/+|\/+$/g, '');
-  return clean ? `/${locale}/${clean}/` : `/${locale}/`;
+  // 带锚点的路径（如 products#type-c）需要保留 # 之后的锚点
+  const [pathPart, hashPart] = clean.split('#');
+  // 单语站：根路径直出，无 /ru/ 前缀
+  const url = pathPart ? `/${pathPart}/` : '/';
+  return hashPart ? `${url}#${hashPart}` : url;
 }
 
-/**
- * 生成 hreflang 备用链接组（含 x-default）。
- * 用于 <link rel="alternate" hreflang="..."> —— Yandex / Google 多语言收录关键。
- */
 export function getAlternateLinks(
   site: string,
   path = '',

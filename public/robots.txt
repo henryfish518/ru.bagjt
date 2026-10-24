@@ -1,4 +1,4 @@
-# robots.txt — bagjt.com
+# robots.txt — ru.bagjt.com
 # 目标：方便 Yandex 与 Google 收录，俄语单语站点
 
 User-agent: *
@@ -12,7 +12,7 @@ Disallow: /*.json$
 User-agent: Yandex
 Allow: /
 Clean-param: utm_source&utm_medium&utm_campaign&utm_term&utm_content&yclid&gclid
-Host: bagjt.com
+Host: ru.bagjt.com
 
 # --- Google ---
 User-agent: Googlebot

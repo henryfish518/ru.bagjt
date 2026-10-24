@@ -16,12 +16,7 @@ import CtaBand from '@/components/CtaBand.astro';
 import { useTranslations, type Locale, getLocalizedPath } from '@/i18n';
 import { CONTACT, telegramLink, whatsappLink, mailtoLink, CONTACT_CONFIGURED } from '@/config';
 
-export function getStaticPaths() {
-  return [{ params: { lang: 'ru' } }];
-}
-
-const { lang } = Astro.params as { lang: Locale };
-const locale = lang;
+const locale: Locale = 'ru'; // 单语站：根路径直出
 const t = useTranslations(locale);
 const c = t.contact;
 
