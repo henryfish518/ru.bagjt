@@ -73,11 +73,11 @@ const orgJsonLd = {
     {
       '@type': 'ContactPoint',
       contactType: 'sales',
-      availableLanguage: ['ru', 'en', 'zh'],
+      availableLanguage: ['ru', 'zh'],
       areaServed: ['RU', 'KZ', 'UZ', 'KG', 'TJ', 'TM'],
     },
   ],
-  knowsLanguage: ['ru', 'en'],
+  knowsLanguage: ['ru'],
   slogan: t.brand.tagline,
 };
 ---
@@ -119,10 +119,6 @@ const orgJsonLd = {
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:locale" content={meta.ogLocale} />
-    <meta
-      property="og:locale:alternate"
-      content={locale === 'ru' ? LOCALE_META.en.ogLocale : LOCALE_META.ru.ogLocale}
-    />
 
     <!-- ============ Twitter Card ============ -->
     <meta name="twitter:card" content="summary_large_image" />

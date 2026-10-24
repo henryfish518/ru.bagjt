@@ -17,7 +17,7 @@ import { useTranslations, type Locale, getLocalizedPath } from '@/i18n';
 import { CONTACT, telegramLink, whatsappLink, mailtoLink, CONTACT_CONFIGURED } from '@/config';
 
 export function getStaticPaths() {
-  return [{ params: { lang: 'ru' } }, { params: { lang: 'en' } }];
+  return [{ params: { lang: 'ru' } }];
 }
 
 const { lang } = Astro.params as { lang: Locale };

@@ -1,5 +1,5 @@
 # robots.txt — bagjt.com
-# 目标：方便 Yandex 与 Google 收录，同时明确多语言站点结构
+# 目标：方便 Yandex 与 Google 收录，俄语单语站点
 
 User-agent: *
 Allow: /

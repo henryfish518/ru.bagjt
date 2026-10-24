@@ -35,7 +35,6 @@ const targetAbs = new URL(target, SITE.url).href;
 
     <!-- hreflang -->
     <link rel="alternate" hreflang="ru-RU" href={targetAbs} />
-    <link rel="alternate" hreflang="en-US" href={new URL('/en/', SITE.url).href} />
     <link rel="alternate" hreflang="x-default" href={targetAbs} />
 
     <!-- 1) meta refresh 兜底 -->
@@ -103,8 +102,7 @@ const targetAbs = new URL(target, SITE.url).href;
       <a href={target}>Перейти на сайт →</a>
 
       <div class="links">
-        <a href={target}>Русский</a> ·
-        <a href="/en/">English</a>
+        <a href={target}>Русский</a>
       </div>
     </div>
   </body>

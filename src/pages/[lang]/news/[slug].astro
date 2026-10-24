@@ -14,7 +14,7 @@ import { SITE } from '@/config';
 
 export async function getStaticPaths() {
   const posts = await getCollection('news', ({ data }) => !data.draft);
-  const byLang: Record<string, Map<string, (typeof posts)[number]>> = { ru: new Map(), en: new Map() };
+  const byLang: Record<string, Map<string, (typeof posts)[number]>> = { ru: new Map() };
   for (const post of posts) {
     const [lang, slug] = post.id.replace(/\\/g, '/').split('/');
     byLang[lang]?.set(slug, post);
@@ -31,7 +31,7 @@ const { Content } = await render(entry);
 
 const { title, date, description, cover } = entry.data;
 const mySlug = entry.id.replace(/\\/g, '/').split('/')[1];
-const other: Locale = locale === 'ru' ? 'en' : 'ru';
+const other: Locale = locale; // 单语站：无另一语言
 const t = useTranslations(locale);
 
 /** hreflang：仅当另一语言存在同名文章时输出 */
@@ -44,7 +44,7 @@ const alternates = [
     hreflang: LOCALE_META[locale].hreflang,
     href: new URL(getLocalizedPath(locale, `news/${mySlug}`), SITE.url).href,
   },
-  ...(otherPost.length > 0
+  ...(other !== locale && otherPost.length > 0
     ? [
         {
           hreflang: LOCALE_META[other].hreflang,

@@ -5,10 +5,9 @@
  * 修改文案 = 直接改 json 文件 → 重新打包部署。无 CMS、无后台。
  */
 
-import en from './en.json';
 import ru from './ru.json';
 
-export const LOCALES = ['ru', 'en'] as const;
+export const LOCALES = ['ru'] as const;
 export type Locale = (typeof LOCALES)[number];
 
 /** 默认语言：俄语（访问 / 自动跳转到 /ru/） */
@@ -17,29 +16,25 @@ export const DEFAULT_LOCALE: Locale = 'ru';
 /** 各语言的 html lang 与 og:locale */
 export const LOCALE_META: Record<Locale, { htmlLang: string; ogLocale: string; hreflang: string }> = {
   ru: { htmlLang: 'ru', ogLocale: 'ru_RU', hreflang: 'ru-RU' },
-  en: { htmlLang: 'en', ogLocale: 'en_US', hreflang: 'en-US' },
 };
 
 /** 语言切换器显示名（用该语言自身书写，符合本地化惯例） */
 export const LOCALE_LABEL: Record<Locale, string> = {
   ru: 'Русский',
-  en: 'English',
 };
 
 export const LOCALE_SHORT: Record<Locale, string> = {
   ru: 'RU',
-  en: 'EN',
 };
 
 /** 语言旗标 emoji 占位（如需 SVG 图标可替换为组件） */
 export const LOCALE_FLAG: Record<Locale, string> = {
   ru: '🇷🇺',
-  en: '🇬🇧',
 };
 
-const dictionaries = { ru, en } as const;
+const dictionaries = { ru } as const;
 
-export type Dictionary = typeof en;
+export type Dictionary = typeof ru;
 
 /**
  * 取指定语言的完整字典。
@@ -80,7 +75,7 @@ export function getAlternateLinks(
 
 /** 根据当前语言返回另一种语言（用于语言切换器） */
 export function getOtherLocale(locale: Locale): Locale {
-  return locale === 'ru' ? 'en' : 'ru';
+  return locale; // 单语站：无另一语言（切换器不渲染）
 }
 
 /** 校验任意字符串是否为受支持的语言 */

@@ -105,6 +105,7 @@ const isActive = (itemSlug: string) => itemSlug === slug;
         >
           {LOCALE_SHORT[locale]}
         </span>
+{other !== locale && (
         <a
           href={switchHref}
           hreflang={other}
@@ -114,6 +115,7 @@ const isActive = (itemSlug: string) => itemSlug === slug;
         >
           {LOCALE_SHORT[other]}
         </a>
+        )}
       </div>
 
       <!-- CTA -->
@@ -163,6 +165,7 @@ const isActive = (itemSlug: string) => itemSlug === slug;
         <a href={getLocalizedPath(locale, 'contact')} class="btn-accent flex-1">
           {t.common.getQuote}
         </a>
+{other !== locale && (
         <a
           href={switchHref}
           hreflang={other}
@@ -172,6 +175,7 @@ const isActive = (itemSlug: string) => itemSlug === slug;
         >
           {LOCALE_SHORT[other]}
         </a>
+        )}
       </div>
     </div>
   </nav>

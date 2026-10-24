@@ -15,7 +15,7 @@ export default defineConfig({
   // 默认语言为俄语。访问 / 时由 src/pages/index.astro 跳转到 /ru/
   i18n: {
     defaultLocale: 'ru',
-    locales: ['ru', 'en'],
+    locales: ['ru'],
     routing: {
       prefixDefaultLocale: true,
       redirectToDefaultLocale: false,
@@ -29,7 +29,6 @@ export default defineConfig({
         defaultLocale: 'ru',
         locales: {
           ru: 'ru-RU',
-          en: 'en-US',
         },
       },
       // 首页重定向页不入 sitemap
